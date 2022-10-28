@@ -1,8 +1,12 @@
-﻿  Creature.cpp
-  Game.cpp
-  Player.cpp
-C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Project\GameProject\Game\Player.cpp(103,15): warning C4244: '=': 'double' から 'int' への変換です。データが失われる可能性があります。
-  コードを生成中...
+﻿  Map.cpp
+C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Project\GameProject\Game\Map.cpp(41,36): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Project\GameProject\Game\Map.cpp(41,21): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Project\GameProject\Game\Map.cpp(50,10): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Project\GameProject\Game\Map.cpp(55,10): warning C4244: '初期化中': 'float' から 'int' への変換です。データが失われる可能性があります。
+Base.obj : warning LNK4099: PDB 'vc143.pdb' が 'Base.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+UI.obj : warning LNK4099: PDB 'vc143.pdb' が 'UI.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+main.obj : warning LNK4099: PDB 'vc143.pdb' が 'main.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+Title.obj : warning LNK4099: PDB 'vc143.pdb' が 'Title.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(init.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(init.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(window.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(window.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(input.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(input.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
@@ -14,15 +18,19 @@ GLFW.lib(monitor.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(monitor.ob
 GLFW.lib(vulkan.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(vulkan.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(win32_window.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(win32_window.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(win32_tls.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(win32_tls.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
-  glew.lib(glew.obj) : MSIL .netmodule または /GL を伴ってコンパイルされたモジュールが見つかりました。/LTCG を使用して再開始してください。リンカーのパフォーマンスを向上させるためには、コマンドラインに /LTCG を追加してください。
 GLFW.lib(win32_joystick.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(win32_joystick.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(wgl_context.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(wgl_context.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(egl_context.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(egl_context.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+  glew.lib(glew.obj) : MSIL .netmodule または /GL を伴ってコンパイルされたモジュールが見つかりました。/LTCG を使用して再開始してください。リンカーのパフォーマンスを向上させるためには、コマンドラインに /LTCG を追加してください。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
      ライブラリ C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Project\/../Game/GameProject.lib とオブジェクト C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Project\/../Game/GameProject.exp を作成中
 LINK : warning LNK4098: defaultlib 'LIBCMT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
   コード生成しています。
   コード生成が終了しました。
+Base.obj : warning LNK4099: PDB 'vc143.pdb' が 'Base.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+UI.obj : warning LNK4099: PDB 'vc143.pdb' が 'UI.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+main.obj : warning LNK4099: PDB 'vc143.pdb' が 'main.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+Title.obj : warning LNK4099: PDB 'vc143.pdb' が 'Title.obj' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\vc143.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(init.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(init.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(window.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(window.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
 GLFW.lib(input.obj) : warning LNK4099: PDB 'GLFW.pdb' が 'GLFW.lib(input.obj)' で、または 'C:\Users\京祐\Desktop\GC1　授業\C++\Creature-s-Parade\Creature's Parade\Game\GLFW.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。

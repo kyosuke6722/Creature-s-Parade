@@ -27,7 +27,7 @@ void Creature::Update() {
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
 		m_is_ground = false;
 	m_vec.y += GRAVITY;
-	//m_pos += m_vec;
+	m_pos += m_vec;
 }
 
 void Creature::Collision(Base* b) {
@@ -45,6 +45,10 @@ void Creature::Collision(Base* b) {
 			}
 		}
 		break;
+	case eType_Player:
+		if (CollisionRect(this, b)) {
+			m_state=eState_Throw;
+		}
 	}
 }
 
@@ -55,15 +59,20 @@ void Creature::Draw(){
 }
 
 void Creature::StateIdle(){
+}
+
+void Creature::StateThrow(){
 	Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player));
 	m_flip = p->m_flip;
 	if (p) {
 		if (m_flip)
-			m_pos = p->m_pos - CVector2D(45, 0);
+			m_pos.x = p->m_pos.x - 45;
 		else
-			m_pos = p->m_pos + CVector2D(45, 0);
+			m_pos.x = p->m_pos.x + 45;
+		const float jump_pow = 15;
+		if (m_is_ground && PUSH(CInput::eButton5)) {
+			m_vec.y = -jump_pow;
+			m_is_ground = false;
+		}
 	}
-}
-
-void Creature::StateThrow(){
 }

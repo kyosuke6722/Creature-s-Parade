@@ -81,7 +81,7 @@ void Player::Draw(){
 
 void Player::StateIdle(){
 	const float move_speed = 6;
-	const float jump_pow = 12;
+	const float jump_pow = 15;
 	//‰EˆÚ“®
 	if (HOLD(CInput::eRight)) {
 		m_pos.x += move_speed;
