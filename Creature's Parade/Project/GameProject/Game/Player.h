@@ -10,11 +10,15 @@ private:
 	CImage m_img;
 	CImage m_throw;
 	int m_state;//ó‘Ô•Ï”
-	bool m_flip;//”½“]İ’è
+	bool m_is_ground;//’…’nƒtƒ‰ƒO
+	int m_cnt;
 public:
 	Player(CVector2D pos,bool flip);
 	void Update();
+	void Collision(Base* b);
 	void Draw();
 	void StateIdle();
 	void StateThrow();
+	bool m_flip;
+	static std::list<Player*> p_list;
 };

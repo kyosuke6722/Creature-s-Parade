@@ -66,6 +66,7 @@ void Init(void)
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player_run_test.png"));
 	ADD_RESOURCE("Player_throw", CImage::CreateImage("Image/Player_throw_test.png"));
 	ADD_RESOURCE("Creature", CImage::CreateImage("Image/Creature_test.png"));
+	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
 
 
 
