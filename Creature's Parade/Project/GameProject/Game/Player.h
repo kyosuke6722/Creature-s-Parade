@@ -20,5 +20,4 @@ public:
 	void StateIdle();
 	void StateThrow();
 	bool m_flip;
-	static std::list<Player*> p_list;
 };

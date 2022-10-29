@@ -1,6 +1,5 @@
 #include "Player.h"
 #include"Map.h"
-std::list<Player*> Player::p_list;
 
 Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	//’Êíó‘Ô
