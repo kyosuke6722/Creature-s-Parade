@@ -17,7 +17,7 @@ Creature::Creature(CVector2D pos,bool flip):Base(eType_Creature) {
 
 Creature::~Creature(){
 	if (m_player)
-		m_player->ThrowCreature(this);
+		m_player->EraseCreature(this);
 }
 
 void Creature::Update() {

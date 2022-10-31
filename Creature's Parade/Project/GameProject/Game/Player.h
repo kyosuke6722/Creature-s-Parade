@@ -21,6 +21,7 @@ public:
 	void Draw();
 	void StateIdle();
 	void StateThrow();
-	void ThrowCreature(Creature* c);
+	void EraseCreature(Creature* c);
+	void ThrowCreature();
 	bool m_flip;
 };

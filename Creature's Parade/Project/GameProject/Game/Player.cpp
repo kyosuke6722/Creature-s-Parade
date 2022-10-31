@@ -99,13 +99,14 @@ void Player::StateIdle(){
 		m_flip = false;
 	}
 	//ジャンプ
-	if (m_is_ground && PUSH(CInput::eButton5)) {
+	if (m_is_ground && PUSH(CInput::eUp)) {
 		m_vec.y =- jump_pow;
 		m_is_ground = false;
 	}
 	//投げ
 	if (PUSH(CInput::eMouseL)) {
 		m_state = eState_Throw;
+		ThrowCreature();
 		m_cnt = 0.5 * 60;
 	}
 }
@@ -116,8 +117,18 @@ void Player::StateThrow(){
 	}
 }
 
-void Player::ThrowCreature(Creature* c){
+void Player::EraseCreature(Creature* c){
 	auto it = std::find(m_creature.begin(), m_creature.end(), c);//リストから子を検索
 	(*it)->m_player = nullptr;//子　親を解除
 	m_creature.erase(it);//親　子をリストから外す
+}
+
+void Player::ThrowCreature() {
+	auto it = m_creature.begin();
+	auto it2 = m_creature.end();
+	if (it != it2) {
+		(*it)->m_vec = CVector2D(50, -15);
+		(*it)->m_player = nullptr;
+		it = m_creature.erase(it);
+	}
 }
