@@ -1,4 +1,5 @@
 #include "Player.h"
+#include"Creature.h"
 #include"Map.h"
 
 Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
@@ -56,8 +57,14 @@ void Player::Collision(Base* b){
 			}
 		}
 		break;
-	case eType_Bullet:
+	case eType_Creature:
 		if (Base::CollisionRect(this, b)) {
+			if (Creature* c = dynamic_cast<Creature*>(b)) {
+				if (!c->m_player) {
+					c->m_player = this;//親をplayerに設定
+					m_creature.push_back(c);//listにcreatureを追加
+				}
+			}
 		}
 		break;
 	}
@@ -107,4 +114,10 @@ void Player::StateThrow(){
 	if (m_cnt-- < 0) {
 		m_state = eState_Idle;
 	}
+}
+
+void Player::ThrowCreature(Creature* c){
+	auto it = std::find(m_creature.begin(), m_creature.end(), c);//リストから子を検索
+	(*it)->m_player = nullptr;//子　親を解除
+	m_creature.erase(it);//親　子をリストから外す
 }

@@ -1,7 +1,9 @@
 #pragma once
 #include"../Base/Base.h"
 
+class Creature;
 class Player :public Base {
+	std::list<Creature*> m_creature;//creature‚ğŠÇ—‚·‚élist
 private:
 	enum {
 		eState_Idle,
@@ -19,5 +21,6 @@ public:
 	void Draw();
 	void StateIdle();
 	void StateThrow();
+	void ThrowCreature(Creature* c);
 	bool m_flip;
 };

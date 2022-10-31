@@ -4,7 +4,7 @@ enum {
 	eType_Field,
 	eType_Player,
 	eType_Enemy,
-	eType_Bullet,
+	eType_Creature,
 	eType_Goal,
 	eType_Player_Attack,
 	eType_Enemy_Attack,

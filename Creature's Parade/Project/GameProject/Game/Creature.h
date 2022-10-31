@@ -1,6 +1,7 @@
 #pragma once
 #include"../Base/Base.h"
 
+class Player;
 class Creature :public Base {
 	enum {
 		eState_Idle,
@@ -13,9 +14,11 @@ private:
 	bool m_is_ground;//’…’nƒtƒ‰ƒO
 public:
 	Creature(CVector2D pos,bool flip);
+	~Creature();
+	Player* m_player;
 	void Update();
 	void Collision(Base* b);
 	void Draw();
 	void StateIdle();
-	void StateThrow();
+	//void StateThrow();
 };

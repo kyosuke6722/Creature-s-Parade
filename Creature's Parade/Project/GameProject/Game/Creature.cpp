@@ -2,7 +2,7 @@
 #include"Player.h"
 #include"Map.h"
 
-Creature::Creature(CVector2D pos,bool flip):Base(eType_Bullet) {
+Creature::Creature(CVector2D pos,bool flip):Base(eType_Creature) {
 	m_img = COPY_RESOURCE("Creature", CImage);
 	m_img.SetRect(62, 35, 688, 755);
 	m_img.SetSize(45, 74);
@@ -12,6 +12,12 @@ Creature::Creature(CVector2D pos,bool flip):Base(eType_Bullet) {
 	m_flip = flip;
 	m_state = eState_Idle;
 	m_is_ground = true;
+	m_player = nullptr;
+}
+
+Creature::~Creature(){
+	if (m_player)
+		m_player->ThrowCreature(this);
 }
 
 void Creature::Update() {
@@ -20,9 +26,11 @@ void Creature::Update() {
 	case eState_Idle:
 		StateIdle();
 		break;
+		/*
 	case eState_Throw:
 		StateThrow();
 		break;
+		*/
 	}
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
 		m_is_ground = false;
@@ -45,10 +53,13 @@ void Creature::Collision(Base* b) {
 			}
 		}
 		break;
+		/*
 	case eType_Player:
 		if (CollisionRect(this, b)) {
 			m_state=eState_Throw;
 		}
+		break;
+		*/
 	}
 }
 
@@ -59,8 +70,13 @@ void Creature::Draw(){
 }
 
 void Creature::StateIdle(){
+	if (m_player) {
+		const float move_speed = 6;
+		m_vec = m_player->m_pos - m_pos;
+	}
 }
 
+/*
 void Creature::StateThrow(){
 	Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player));
 	m_flip = p->m_flip;
@@ -76,3 +92,4 @@ void Creature::StateThrow(){
 		}
 	}
 }
+*/
