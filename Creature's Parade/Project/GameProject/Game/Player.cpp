@@ -59,6 +59,10 @@ void Player::Collision(Base* b){
 			}
 		}
 		break;
+	case eType_Obstacle:
+		if (CollisionRect(this, b)) {
+			m_pos.x = m_pos_old.x;
+		}
 	case eType_Creature:
 		if (m_state!=eState_Throw) {
 			if (Base::CollisionRect(this, b)) {

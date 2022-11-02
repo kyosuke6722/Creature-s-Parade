@@ -57,6 +57,12 @@ void Creature::Collision(Base* b) {
 			}
 		}
 		break;
+	case eType_Obstacle:
+		if (CollisionRect(this, b)) {
+			m_pos.x = m_pos_old.x;
+			m_vec.x = 0;
+		}
+		break;
 		/*
 	case eType_Player:
 		if (CollisionRect(this, b)) {
