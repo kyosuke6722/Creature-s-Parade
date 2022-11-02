@@ -131,8 +131,8 @@ void Player::ThrowCreature() {
 	auto it = m_creature.begin();
 	auto it2 = m_creature.end();
 	if (it != it2) {
-		CVector2D vec = CInput::GetMousePoint() - m_pos;
-		(*it)->m_vec = vec.GetNormalize()*20;
+		CVector2D vec = CInput::GetMousePoint()-CVector2D(1920/2,1080/2);//‰æ–Êã‚Å‚ÍPlayer‚Íí‚É‰æ–Ê‚Ì’†S‚É‚¢‚é
+		(*it)->m_vec = vec.GetNormalize()*20.0f;
 		(*it)->m_player = nullptr;
 		it = m_creature.erase(it);
 		m_bring--;

@@ -53,7 +53,7 @@ void Creature::Collision(Base* b) {
 				m_pos.y = m_pos_old.y;
 				m_vec.y = 0;
 				m_is_ground = true;
-				m_vec.x *= 0.95;//–€ŽC
+				m_vec.x *= 0.8;//–€ŽC
 			}
 		}
 		break;
@@ -71,13 +71,16 @@ void Creature::Draw(){
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
-	DrawRect();
 }
 
 void Creature::StateIdle(){
 	if (m_player) {
 		const float move_speed = 6;
-		m_vec = m_player->m_pos-m_pos-CVector2D(m_column*60,0);
+		if (Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player)))
+			if (p->m_flip)
+				m_vec = m_player->m_pos - m_pos - CVector2D(m_column * 30, 0);
+			else
+				m_vec = m_player->m_pos - m_pos + CVector2D(m_column * 30, 0);
 	}
 }
 
