@@ -20,6 +20,7 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_cnt = 0;
 	m_state = eState_Idle;
 	m_is_ground = true;
+	m_bring = 0;
 }
 
 void Player::Update(){
@@ -64,6 +65,7 @@ void Player::Collision(Base* b){
 					if (!c->m_player) {
 						c->m_player = this;//e‚ðplayer‚ÉÝ’è
 						m_creature.push_back(c);//list‚Écreature‚ð’Ç‰Á
+						c->m_column=++m_bring;
 					}
 				}
 			}
@@ -133,5 +135,9 @@ void Player::ThrowCreature() {
 		(*it)->m_vec = vec.GetNormalize()*20;
 		(*it)->m_player = nullptr;
 		it = m_creature.erase(it);
+		m_bring--;
+		for (it; it != it2; it++) {
+			(*it)->m_column--;
+		}
 	}
 }

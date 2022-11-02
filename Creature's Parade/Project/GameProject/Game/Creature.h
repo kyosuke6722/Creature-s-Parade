@@ -16,6 +16,7 @@ public:
 	Creature(CVector2D pos,bool flip);
 	~Creature();
 	Player* m_player;
+	int m_column;//‰½—ñ–Ú‚É‚¢‚é‚©
 	void Update();
 	void Collision(Base* b);
 	void Draw();

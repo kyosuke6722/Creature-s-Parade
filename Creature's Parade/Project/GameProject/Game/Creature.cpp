@@ -13,6 +13,7 @@ Creature::Creature(CVector2D pos,bool flip):Base(eType_Creature) {
 	m_state = eState_Idle;
 	m_is_ground = true;
 	m_player = nullptr;
+	m_column = 0;//0—ñ–Ú(Player‚É‚Â‚¢‚Ä‚¢‚È‚¢)
 }
 
 Creature::~Creature(){
@@ -76,7 +77,7 @@ void Creature::Draw(){
 void Creature::StateIdle(){
 	if (m_player) {
 		const float move_speed = 6;
-		m_vec = m_player->m_pos - m_pos;
+		m_vec = m_player->m_pos-m_pos-CVector2D(m_column*60,0);
 	}
 }
 
