@@ -58,11 +58,13 @@ void Player::Collision(Base* b){
 		}
 		break;
 	case eType_Creature:
-		if (Base::CollisionRect(this, b)) {
-			if (Creature* c = dynamic_cast<Creature*>(b)) {
-				if (!c->m_player) {
-					c->m_player = this;//e‚ğplayer‚Éİ’è
-					m_creature.push_back(c);//list‚Écreature‚ğ’Ç‰Á
+		if (m_state!=eState_Throw) {
+			if (Base::CollisionRect(this, b)) {
+				if (Creature* c = dynamic_cast<Creature*>(b)) {
+					if (!c->m_player) {
+						c->m_player = this;//e‚ğplayer‚Éİ’è
+						m_creature.push_back(c);//list‚Écreature‚ğ’Ç‰Á
+					}
 				}
 			}
 		}
@@ -127,7 +129,8 @@ void Player::ThrowCreature() {
 	auto it = m_creature.begin();
 	auto it2 = m_creature.end();
 	if (it != it2) {
-		(*it)->m_vec = CVector2D(50, -15);
+		CVector2D vec = CInput::GetMousePoint() - m_pos;
+		(*it)->m_vec = vec.GetNormalize()*20;
 		(*it)->m_player = nullptr;
 		it = m_creature.erase(it);
 	}
