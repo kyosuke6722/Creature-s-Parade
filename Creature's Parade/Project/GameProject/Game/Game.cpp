@@ -6,8 +6,9 @@
 Game::Game():Base(eType_Scene) {
 	Base::Add(new Map());
 	Base::Add(new Player(CVector2D(3*72,20*72),true));
-	Base::Add(new Creature(CVector2D(5*72, 20*72), false));
-	Base::Add(new Creature(CVector2D(6 * 72, 20 * 72), false));
+	for (int i = 5; i < 9; i++) {
+		Base::Add(new Creature(CVector2D(i * 72, 20 * 72), false));
+	}
 }
 
 Game::~Game(){

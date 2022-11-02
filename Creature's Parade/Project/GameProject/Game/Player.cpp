@@ -17,9 +17,10 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_rect = CRect(-45/2,-74,45/2,0);
 	m_pos = m_pos_old = pos;
 	m_flip = flip;
-	m_cnt = 0;
 	m_state = eState_Idle;
 	m_is_ground = true;
+	m_cnt = 0;
+	m_hp = 5;
 	m_bring = 0;
 }
 
