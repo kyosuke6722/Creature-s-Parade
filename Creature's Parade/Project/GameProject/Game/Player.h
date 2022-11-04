@@ -10,7 +10,7 @@ private:
 		eState_Throw
 	};
 	CImage m_img;
-	CImage m_throw;
+	//CImage m_throw;
 	int m_state;//ó‘Ô•Ï”
 	bool m_is_ground;//’…’nƒtƒ‰ƒO
 	int m_cnt;

@@ -4,6 +4,7 @@
 class Trap :public Base {
 private:
 	CImage m_img;
+	int m_hp;//‘Ï‹v—Í
 public:
 	Trap();
 	~Trap();

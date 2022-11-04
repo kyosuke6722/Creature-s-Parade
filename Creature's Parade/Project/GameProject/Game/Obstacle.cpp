@@ -14,7 +14,7 @@ Obstacle::~Obstacle(){
 
 void Obstacle::Collision(Base* b){
 	switch (b->m_type) {
-	case eType_Creature:
+	case eType_Player_Attack:
 		if (CollisionRect(this, b)) {
 			m_hp--;
 			if (m_hp <= 0)

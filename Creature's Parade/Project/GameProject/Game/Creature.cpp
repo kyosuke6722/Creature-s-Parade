@@ -47,6 +47,7 @@ void Creature::Collision(Base* b) {
 			if (t != 0) {
 				m_pos.x = m_pos_old.x;
 				m_vec.x = 0;
+				m_type = eType_Creature;
 			}
 			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y));
 			if (t != 0) {
@@ -54,6 +55,7 @@ void Creature::Collision(Base* b) {
 				m_vec.y = 0;
 				m_is_ground = true;
 				m_vec.x *= 0.8;//–€ŽC
+				m_type = eType_Creature;
 			}
 		}
 		break;

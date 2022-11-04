@@ -1,5 +1,6 @@
 //ゲーム係機能のインクルード
 #include <GLLibrary.h>
+#include"Game/AnimData.h"
 #include"Title/Title.h"
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
@@ -63,7 +64,7 @@ void Init(void)
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player_run_test.png"));
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png" , player_anim_data, 32, 32));
 	ADD_RESOURCE("Player_throw", CImage::CreateImage("Image/Player_throw_test.png"));
 	ADD_RESOURCE("Creature", CImage::CreateImage("Image/Creature_test.png"));
 	ADD_RESOURCE("Obstacle", CImage::CreateImage("Image/Obstacle_test.png"));
