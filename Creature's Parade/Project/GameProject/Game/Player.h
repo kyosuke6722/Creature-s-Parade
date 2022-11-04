@@ -13,7 +13,6 @@ private:
 	//CImage m_throw;
 	int m_state;//状態変数
 	bool m_is_ground;//着地フラグ
-	int m_cnt;
 	int m_hp;//体力
 	int m_bring;//連れているCreatureの数
 public:

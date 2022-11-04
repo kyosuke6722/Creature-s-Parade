@@ -13,7 +13,6 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_flip = flip;
 	m_state = eState_Idle;
 	m_is_ground = true;
-	m_cnt = 0;
 	m_hp = 5;
 	m_bring = 0;
 }
@@ -44,12 +43,8 @@ void Player::Update() {
 	if (m_is_ground && PUSH(CInput::eUp)) {
 		m_vec.y = -jump_pow;
 		m_is_ground = false;
-	}
-	//投げ
-	if (PUSH(CInput::eMouseL)) {
-		m_state = eState_Throw;
-		ThrowCreature();
-		m_cnt = 0.5 * 60;
+		if (m_state != eState_Throw)
+			m_img.ChangeAnimation(eAnimRun);
 	}
 	switch (m_state)
 	{
@@ -68,8 +63,8 @@ void Player::Update() {
 
 	m_img.UpdateAnimation();
 	m_scroll.x = m_pos.x - 1920 / 2;//スクロール設定
-	//if (m_scroll.x < 14 * 72 - 1920 / 2)
-	//	m_scroll.x = 14 * 72 - 1920 / 2;
+	if (m_scroll.x < 14 * 72 - 1920 / 2)
+		m_scroll.x = 14 * 72 - 1920 / 2;
 	m_scroll.y = m_pos.y - 600;
 	if (m_scroll.y > 72 * 16 - 600)
 		m_scroll.y = 72 * 16 - 600;
@@ -126,11 +121,16 @@ void Player::Draw() {
 }
 
 void Player::StateIdle() {
+	//投げ
+	if (PUSH(CInput::eMouseL)) {
+		m_state = eState_Throw;
+		ThrowCreature();
+	}
 }
 
 void Player::StateThrow(){
 	m_img.ChangeAnimation(eAnimThrow,false);
-	if (m_cnt-- < 0) {
+	if (m_img.CheckAnimationEnd()) {
 		m_state = eState_Idle;
 	}
 }
@@ -145,7 +145,7 @@ void Player::ThrowCreature() {
 	auto it = m_creature.begin();
 	auto it2 = m_creature.end();
 	if (it != it2) {
-		CVector2D vec = CInput::GetMousePoint()-CVector2D(1920/2,1080/2);//画面上ではPlayerは常に画面の中心にいる
+		CVector2D vec = CInput::GetMousePoint() - GetScreenPos(m_pos);//(画面上での目的地)-(画面上での現在地)
 		(*it)->m_vec = vec.GetNormalize()*20.0f;
 		(*it)->m_type = eType_Player_Attack;
 		(*it)->m_player = nullptr;

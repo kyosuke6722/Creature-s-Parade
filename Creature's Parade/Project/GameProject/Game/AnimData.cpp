@@ -18,10 +18,10 @@ static TexAnim playerRun[] = {
 
 //投擲アニメーション
 static TexAnim playerThrow[] = {
-	{11,8},
-	{8,7},
-	{9,7},
-	{10,8},
+	{11,5},
+	{8,5},
+	{9,5},
+	{10,5},
 };
 
 TexAnimData player_anim_data[] = {
