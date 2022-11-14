@@ -29,3 +29,48 @@ TexAnimData player_anim_data[] = {
 	ANIMDATA(playerRun),
 	ANIMDATA(playerThrow),
 };
+
+//‰Š
+static TexAnim effect_fire[] = {
+	{14,2},
+	{15,2},
+	{16,2},
+	{0,2},
+	{1,2},
+
+	{2,10},
+	{3,10},
+	{4,10},
+	{5,10},
+	{6,10},
+	{7,10},
+	{8,10},
+	{9,10},
+	{10,10},
+	{11,10},
+	{12,10},
+	{13,10},
+
+	{14,2},
+	{15,2},
+	{16,2},
+};
+
+TexAnimData effect_fire_anim_data[] = {
+	ANIMDATA(effect_fire),
+};
+
+//”­ŽË‘ä
+static TexAnim launchpad[] = {
+	{0,6},
+	{1,2},
+	{2,2},
+	{3,120},
+	{2,2},
+	{1,2},
+	{0,2},
+};
+
+TexAnimData launchpad_anim_data[] = {
+	ANIMDATA(launchpad),
+};

@@ -13,8 +13,9 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_flip = flip;
 	m_state = eState_Idle;
 	m_is_ground = true;
-	m_hp = 5;
-	m_bring = 0;
+	m_hp = 5;//体力
+	m_invincible=0;//無敵時間
+	m_bring = 0;//連れている数
 }
 
 void Player::Update() {
@@ -61,6 +62,9 @@ void Player::Update() {
 	m_vec.y += GRAVITY;//重力による落下
 	m_pos += m_vec;
 
+	if (m_invincible > 0)
+		m_invincible--;
+
 	m_img.UpdateAnimation();
 	m_scroll.x = m_pos.x - 1920 / 2;//スクロール設定
 	if (m_scroll.x < 14 * 72 - 1920 / 2)
@@ -92,10 +96,11 @@ void Player::Collision(Base* b) {
 		}
 		break;
 	case eType_Effect:
-		if (CollisionRect(this, b)) {
+		if (CollisionRect(this, b)&&m_invincible<=0) {
 			m_hp--;
 			if (m_hp <= 0)
 				SetKill();
+			m_invincible = 3 * 60;
 		}
 		break;
 	case eType_Creature:

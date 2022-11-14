@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"Creature.h"
 #include"Obstacle.h"
+#include"Trap.h"
 #include"Map.h"
 
 Game::Game():Base(eType_Scene) {
@@ -11,6 +12,7 @@ Game::Game():Base(eType_Scene) {
 		Base::Add(new Creature(CVector2D(i * 72, 20 * 72), false));
 	}
 	Base::Add(new Obstacle(CVector2D(15*72,14*72),4));
+	Base::Add(new Trap(CVector2D(25 * 72, 20 * 72)));
 }
 
 Game::~Game(){

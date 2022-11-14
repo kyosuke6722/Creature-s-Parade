@@ -14,6 +14,7 @@ private:
 	int m_state;//状態変数
 	bool m_is_ground;//着地フラグ
 	int m_hp;//体力
+	int m_invincible;//無敵時間
 	int m_bring;//連れているCreatureの数
 public:
 	Player(CVector2D pos,bool flip);
