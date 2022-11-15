@@ -5,7 +5,7 @@ class Trap :public Base {
 private:
 	CImage m_img;
 	int m_hp;//耐久力
-	int m_cnt;//クールタイム
+	bool m_fire;//Effect連発防止
 public:
 	Trap(CVector2D pos);
 	~Trap();

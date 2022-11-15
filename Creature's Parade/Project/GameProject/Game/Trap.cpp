@@ -3,27 +3,26 @@
 
 Trap::Trap(CVector2D pos):Base(eType_Obstacle) {
 	m_img = COPY_RESOURCE("LaunchPad", CImage);
-	m_img.ChangeAnimation(0,true);
+	m_img.ChangeAnimation(0);
 	m_pos = pos;
-	m_img.SetSize(16*5,16*5);
-	m_img.SetCenter(8*5,0);
-	m_rect = CRect(-5*5,8*4,5*5,16*5);
+	m_img.SetSize(16*10,16*10);
+	m_img.SetCenter(8*10,0);
+	m_rect = CRect(-5*10,8*8,5*10,16*10);
 	m_hp = 5;
-	m_cnt = 3 * 60;//クールタイム
+	m_fire = true;
 }
 
 Trap::~Trap(){
 }
 
-void Trap::Update(){
-	if (m_cnt-- < 0) {
-		m_img.UpdateAnimation();
-		if (m_img.GetIndex() == 0) {
-			Base::Add(new Effect("Fire", m_pos));
-		}
-		if (m_img.CheckAnimationEnd()) {
-			m_cnt = 3 * 60;
-		}
+void Trap::Update() {
+	m_img.UpdateAnimation();
+	if (m_img.GetIndex() == 3 && m_fire) {
+		Base::Add(new Effect("Fire", m_pos + CVector2D(0, 32 * 2)));
+		m_fire = false;
+	}
+	if (m_img.GetIndex() == 6) {
+		m_fire = true;
 	}
 }
 

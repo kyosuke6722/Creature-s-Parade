@@ -68,6 +68,7 @@ void Init(void)
 	ADD_RESOURCE("Creature", CImage::CreateImage("Image/Creature_test.png"));
 	ADD_RESOURCE("Obstacle", CImage::CreateImage("Image/Obstacle_test.png"));
 	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
+	ADD_RESOURCE("Life", CImage::CreateImage("Image/Life.png"));
 	ADD_RESOURCE("Fire", CImage::CreateImage("Image/Fire.png", effect_fire_anim_data, 24, 32));
 	ADD_RESOURCE("LaunchPad", CImage::CreateImage("Image/LaunchPad.png",launchpad_anim_data,16,16));
 

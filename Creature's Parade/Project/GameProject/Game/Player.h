@@ -13,7 +13,6 @@ private:
 	//CImage m_throw;
 	int m_state;//状態変数
 	bool m_is_ground;//着地フラグ
-	int m_hp;//体力
 	int m_invincible;//無敵時間
 	int m_bring;//連れているCreatureの数
 public:
@@ -26,4 +25,5 @@ public:
 	void EraseCreature(Creature* c);
 	void ThrowCreature();
 	bool m_flip;
+	int m_hp;//体力
 };
