@@ -8,45 +8,18 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_img.ChangeAnimation(0);
 	m_img.SetSize(32* 4, 32* 4);
 	m_img.SetCenter(32*2, 32 * 4);
-	m_rect = CRect(-32*2,-32*4,32*2,0);
+	m_rect = CRect(-7*4,-10*8,7*4,0);
 	m_pos = m_pos_old = pos;
 	m_flip = flip;
 	m_state = eState_Idle;
 	m_is_ground = true;
-	m_hp = 5;//体力
+	m_hp = 2;//体力
 	m_invincible=0;//無敵時間
 	m_bring = 0;//連れている数
 }
 
 void Player::Update() {
 	m_pos_old = m_pos;
-	const float move_speed = 6;
-	const float jump_pow = 15;
-	//右移動
-	if (HOLD(CInput::eRight)) {
-		m_pos.x += move_speed;
-		m_flip = true;
-		if(m_state!=eState_Throw)
-		m_img.ChangeAnimation(eAnimRun);
-	}
-	//左移動
-	else if (HOLD(CInput::eLeft)) {
-		m_pos.x -= move_speed;
-		m_flip = false;
-		if (m_state != eState_Throw)
-		m_img.ChangeAnimation(eAnimRun);
-	}
-	else {
-		if (m_state != eState_Throw)
-		m_img.ChangeAnimation(eAnimIdle);
-	}
-	//ジャンプ
-	if (m_is_ground && PUSH(CInput::eUp)) {
-		m_vec.y = -jump_pow;
-		m_is_ground = false;
-		if (m_state != eState_Throw)
-			m_img.ChangeAnimation(eAnimRun);
-	}
 	switch (m_state)
 	{
 	case eState_Idle:
@@ -54,6 +27,12 @@ void Player::Update() {
 		break;
 	case eState_Throw:
 		StateThrow();
+		break;
+	case eState_Damage:
+		StateDamage();
+		break;
+	case eState_Down:
+		StateDown();
 		break;
 	}
 	//落ちていたら落下状態へ移行
@@ -66,7 +45,9 @@ void Player::Update() {
 		m_invincible--;
 
 	m_img.UpdateAnimation();
-	m_scroll.x = m_pos.x - 1920 / 2;//スクロール設定
+
+	//スクロール設定
+	m_scroll.x = m_pos.x - 1920 / 2;
 	if (m_scroll.x < 14 * 72 - 1920 / 2)
 		m_scroll.x = 14 * 72 - 1920 / 2;
 	m_scroll.y = m_pos.y - 600;
@@ -99,7 +80,9 @@ void Player::Collision(Base* b) {
 		if (CollisionRect(this, b)&&m_invincible<=0) {
 			m_hp--;
 			if (m_hp <= 0)
-				SetKill();
+				m_state = eState_Down;
+			else
+				m_state = eState_Damage;
 			m_invincible = 3 * 60;
 		}
 		break;
@@ -123,9 +106,33 @@ void Player::Draw() {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
+	DrawRect();
 }
 
 void Player::StateIdle() {
+	const float move_speed = 6;
+	const float jump_pow = 15;
+	//右移動
+	if (HOLD(CInput::eRight)) {
+		m_pos.x += move_speed;
+		m_flip = true;
+		m_img.ChangeAnimation(eAnimRun);
+	}
+	//左移動
+	else if (HOLD(CInput::eLeft)) {
+		m_pos.x -= move_speed;
+		m_flip = false;
+		m_img.ChangeAnimation(eAnimRun);
+	}
+	else {
+			m_img.ChangeAnimation(eAnimIdle);
+	}
+	//ジャンプ
+	if (m_is_ground && PUSH(CInput::eUp)) {
+		m_vec.y = -jump_pow;
+		m_is_ground = false;
+			m_img.ChangeAnimation(eAnimRun);
+	}
 	//投げ
 	if (PUSH(CInput::eMouseL)) {
 		m_state = eState_Throw;
@@ -134,9 +141,35 @@ void Player::StateIdle() {
 }
 
 void Player::StateThrow(){
+	const float move_speed = 6;
+	const float jump_pow = 15;
+	//右移動
+	if (HOLD(CInput::eRight)) {
+		m_pos.x += move_speed;
+		m_flip = true;
+	}
+	//左移動
+	else if (HOLD(CInput::eLeft)) {
+		m_pos.x -= move_speed;
+		m_flip = false;
+	}
 	m_img.ChangeAnimation(eAnimThrow,false);
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eState_Idle;
+	}
+}
+
+void Player::StateDamage(){
+	m_img.ChangeAnimation(eAnimDamage, false);
+	if (m_img.CheckAnimationEnd()) {
+		m_state = eState_Idle;
+	}
+}
+
+void Player::StateDown(){
+	m_img.ChangeAnimation(eAnimDown, false);
+	if (m_img.CheckAnimationEnd()) {
+		SetKill();
 	}
 }
 

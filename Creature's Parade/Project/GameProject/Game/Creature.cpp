@@ -82,13 +82,25 @@ void Creature::Draw(){
 }
 
 void Creature::StateIdle(){
+	const float move_speed = 6;
+	const float jump_pow = 15;
 	if (m_player) {
-		const float move_speed = 6;
-		if (Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player)))
-			if (p->m_flip)
-				m_vec = m_player->m_pos - m_pos - CVector2D(m_column * 30, 0);
-			else
-				m_vec = m_player->m_pos - m_pos + CVector2D(m_column * 30, 0);
+		if (Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player))) {
+			//ƒWƒƒƒ“ƒv
+			if (m_is_ground && PUSH(CInput::eUp)) {
+				m_vec.y = -jump_pow;
+				m_is_ground = false;
+			}
+			CVector2D vec = CVector2D(0, 0);
+			if (HOLD(CInput::eRight))
+				vec = m_player->m_pos - m_pos - CVector2D(m_column * 30, 0);
+			else if(HOLD(CInput::eLeft))
+				vec = m_player->m_pos - m_pos + CVector2D(m_column * 30, 0);
+			m_ang = atan2(vec.x, vec.y);
+			CVector2D dir(sin(m_ang),0);
+			//e‚Ì•ûŒü‚ÖˆÚ“®
+			m_pos += dir * move_speed;
+		}
 	}
 }
 

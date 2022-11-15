@@ -7,7 +7,9 @@ class Player :public Base {
 private:
 	enum {
 		eState_Idle,
-		eState_Throw
+		eState_Throw,
+		eState_Damage,
+		eState_Down,
 	};
 	CImage m_img;
 	//CImage m_throw;
@@ -22,6 +24,8 @@ public:
 	void Draw();
 	void StateIdle();
 	void StateThrow();
+	void StateDamage();
+	void StateDown();
 	void EraseCreature(Creature* c);
 	void ThrowCreature();
 	bool m_flip;

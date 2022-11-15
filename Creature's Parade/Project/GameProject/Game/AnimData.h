@@ -6,10 +6,8 @@ enum {
 	eAnimIdle=0,
 	eAnimRun,
 	eAnimThrow,
-	eAnimThrowEnd,
 	eAnimDamage,
-	eAnimDamageEnd,
-	eAnimDeath,
+	eAnimDown,
 };
 
 //プレイヤーのアニメーションデータ

@@ -2,9 +2,9 @@
 #include <GLLibrary.h>
 enum {
 	eType_Field,
-	eType_Player,
 	eType_Obstacle,
 	eType_Enemy,
+	eType_Player,
 	eType_Creature,
 	eType_Goal,
 	eType_Player_Attack,
@@ -29,6 +29,8 @@ public:
 	float m_rad;
 	//移動ベクトル
 	CVector2D m_vec;
+	//回転値
+	float m_ang;
 	//削除フラグ
 	bool m_kill;
 	//オブジェクトのリスト

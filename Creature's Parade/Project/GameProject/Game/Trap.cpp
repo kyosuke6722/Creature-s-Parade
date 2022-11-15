@@ -8,7 +8,7 @@ Trap::Trap(CVector2D pos):Base(eType_Obstacle) {
 	m_img.SetSize(16*10,16*10);
 	m_img.SetCenter(8*10,0);
 	m_rect = CRect(-5*10,8*8,5*10,16*10);
-	m_hp = 5;
+	m_hp = 3;
 	m_fire = true;
 }
 

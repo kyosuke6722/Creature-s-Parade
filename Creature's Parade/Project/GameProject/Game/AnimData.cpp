@@ -1,5 +1,6 @@
 #include"AnimData.h"
 
+//プレイヤー
 //待機アニメーション
 static TexAnim playerIdle[] = {
 	{0,45},
@@ -24,10 +25,25 @@ static TexAnim playerThrow[] = {
 	{10,5},
 };
 
+//ダメージアニメーション
+static TexAnim playerDamage[] = {
+	{17,18},
+};
+
+//死亡アニメーション
+static TexAnim playerDown[] = {
+	{17,18},
+	{18,12},
+	{19,12},
+	{20,48},
+};
+
 TexAnimData player_anim_data[] = {
 	ANIMDATA(playerIdle),
 	ANIMDATA(playerRun),
 	ANIMDATA(playerThrow),
+	ANIMDATA(playerDamage),
+	ANIMDATA(playerDown),
 };
 
 //炎
