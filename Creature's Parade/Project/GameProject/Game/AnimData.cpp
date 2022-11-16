@@ -46,6 +46,28 @@ TexAnimData player_anim_data[] = {
 	ANIMDATA(playerDown),
 };
 
+//クリーチャー
+//待機アニメーション
+static TexAnim creatureIdle[] = {
+	{0,45},
+	{1,30},
+	{3,45},
+};
+
+//走行アニメーション
+static TexAnim creatureRun[] = {
+	{6,4},
+	{7,4},
+	{8,4},
+	{9,4},
+	{10,4},
+};
+
+TexAnimData creature_anim_data[] = {
+	ANIMDATA(creatureIdle),
+	ANIMDATA(creatureRun),
+};
+
 //炎
 static TexAnim effect_fire[] = {
 	{0,2},

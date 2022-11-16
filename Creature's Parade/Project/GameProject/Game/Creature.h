@@ -13,7 +13,7 @@ private:
 	int m_state;//ó‘Ô•Ï”
 	bool m_is_ground;//’…’nƒtƒ‰ƒO
 public:
-	Creature(CVector2D pos,bool flip);
+	Creature(const char* name,CVector2D pos,bool flip);
 	~Creature();
 	Player* m_player;
 	int m_column;//‰½—ñ–Ú‚É‚¢‚é‚©

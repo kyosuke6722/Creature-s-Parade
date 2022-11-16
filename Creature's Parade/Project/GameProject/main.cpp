@@ -66,6 +66,18 @@ void Init(void)
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png" , player_anim_data, 32, 32));
 	ADD_RESOURCE("Creature", CImage::CreateImage("Image/Creature_test.png"));
+	//クリーチャー達
+	ADD_RESOURCE("Cat_pink", CImage::CreateImage("Image/Cat_pink.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Cat_yellow", CImage::CreateImage("Image/Cat_yellow.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Skull_blue", CImage::CreateImage("Image/Skull_blue.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Skull_red", CImage::CreateImage("Image/Skull_red.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Slime_blue", CImage::CreateImage("Image/Slime_blue.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Slime_green", CImage::CreateImage("Image/Slime_green.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Slime_red", CImage::CreateImage("Image/Slime_red.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Slime_silver", CImage::CreateImage("Image/Slime_silver.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Witch_blue", CImage::CreateImage("Image/Witch_blue.png", creature_anim_data, 32, 32));
+	ADD_RESOURCE("Witch_pauple", CImage::CreateImage("Image/Witch_pauple.png", creature_anim_data, 32, 32));
+
 	ADD_RESOURCE("Obstacle", CImage::CreateImage("Image/Obstacle_test.png"));
 	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
 	ADD_RESOURCE("Life", CImage::CreateImage("Image/Life.png"));
