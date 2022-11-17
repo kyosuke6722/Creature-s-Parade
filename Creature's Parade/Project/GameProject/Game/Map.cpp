@@ -38,7 +38,7 @@ void Map::Draw() {
 			//表示しない制御
 			if (stage1data[i][j] == 0)continue;
 			int t = stage1data[i][j];
-			m_img.SetRect(32 * t, 0, 32 * t + 32, 32);//画像切り抜き
+			m_img.SetRect(16 * t, 0, 16 * t + 16, 16);//画像切り抜き
 			m_img.SetSize(MAP_TIP_SIZE, MAP_TIP_SIZE);//表示サイズ設定
 			m_img.SetPos(MAP_TIP_SIZE * j - m_scroll.x, MAP_TIP_SIZE * i - m_scroll.y);//表示位置設定
 			m_img.Draw();//描画

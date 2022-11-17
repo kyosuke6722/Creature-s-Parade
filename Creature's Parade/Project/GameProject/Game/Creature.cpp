@@ -97,14 +97,14 @@ void Creature::StateIdle() {
 			}
 			CVector2D vec = CVector2D(0, 0);
 			if (m_player->m_flip) {
-				vec = m_player->m_pos - m_pos - CVector2D(m_column * 64, 0);
+				vec = m_player->m_pos - m_pos -CVector2D(m_column * 64, 0);
 				m_flip = true;
 			}
 			else {
 				vec = m_player->m_pos - m_pos + CVector2D(m_column * 64, 0);
 				m_flip = false;
 			}
-			if (vec.Length() > m_column*0.1*64) {
+			if (vec.Length() > m_column*64*0.1) {
 				m_ang = atan2(vec.x, vec.y);
 				CVector2D dir(sin(m_ang), 0);
 				//e‚Ì•ûŒü‚ÖˆÚ“®

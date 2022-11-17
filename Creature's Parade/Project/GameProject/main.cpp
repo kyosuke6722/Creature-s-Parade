@@ -65,7 +65,6 @@ void Init(void)
 	//-----------------------------------------------------
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png" , player_anim_data, 32, 32));
-	ADD_RESOURCE("Creature", CImage::CreateImage("Image/Creature_test.png"));
 	//クリーチャー達
 	ADD_RESOURCE("Cat_pink", CImage::CreateImage("Image/Cat_pink.png", creature_anim_data, 32, 32));
 	ADD_RESOURCE("Cat_yellow", CImage::CreateImage("Image/Cat_yellow.png", creature_anim_data, 32, 32));
