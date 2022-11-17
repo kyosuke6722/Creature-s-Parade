@@ -44,20 +44,32 @@ void Creature::Update() {
 void Creature::Collision(Base* b) {
 	switch (b->m_type) {
 	case eType_Field:
+		//マップとの判定
 		if (Map* m = dynamic_cast<Map*>(b)) {
-			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y));
+			CVector2D pos;
+			//マップチップの判定（横）
+			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y), m_rect, &pos);
+			//壁ならば
 			if (t != 0) {
-				m_pos.x = m_pos_old.x;
-				m_vec.x = 0;
-				m_type = eType_Creature;
+				//壁際まで戻る
+				m_pos.x = pos.x;
 			}
-			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y));
+			//マップチップの判定（上下）
+			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y), m_rect, &pos);
+			//壁ならば
 			if (t != 0) {
-				m_pos.y = m_pos_old.y;
+				//地面に接触
+				if (pos.y < m_pos.y) {
+					//ジャンプ回数リセット
+					m_is_ground = true;
+					m_vec.x *= 0.8;//摩擦
+					m_type = eType_Creature;
+				}
+				//元の位置に戻す
+				m_pos.y = pos.y;
+				//落下速度リセット
 				m_vec.y = 0;
-				m_is_ground = true;
-				m_vec.x *= 0.8;//摩擦
-				m_type = eType_Creature;
+
 			}
 		}
 		break;
@@ -95,7 +107,7 @@ void Creature::StateIdle() {
 				m_vec.y = -jump_pow;
 				m_is_ground = false;
 			}
-			CVector2D vec = CVector2D(0, 0);
+			CVector2D vec;
 			if (m_player->m_flip) {
 				vec = m_player->m_pos - m_pos -CVector2D(m_column * 64, 0);
 				m_flip = true;

@@ -51,23 +51,37 @@ void Player::Update() {
 	if (m_scroll.x < 14 * 72 - 1920 / 2)
 		m_scroll.x = 14 * 72 - 1920 / 2;
 	m_scroll.y = m_pos.y - 600;
-	if (m_scroll.y > 72 * 16 - 600)
-		m_scroll.y = 72 * 16 - 600;
+	if (m_scroll.y > 72 * 9 - 600)
+		m_scroll.y = 72 * 9 - 600;
 }
 
 void Player::Collision(Base* b) {
 	switch (b->m_type) {
 	case eType_Field:
+		//マップとの判定
 		if (Map* m = dynamic_cast<Map*>(b)) {
-			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y));
+			CVector2D pos;
+			//マップチップの判定（横）
+			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y), m_rect, &pos);
+			//壁ならば
 			if (t != 0) {
-				m_pos.x = m_pos_old.x;
+				//壁際まで戻る
+				m_pos.x = pos.x;
 			}
-			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y));
+			//マップチップの判定（上下）
+			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y), m_rect, &pos);
+			//壁ならば
 			if (t != 0) {
-				m_pos.y = m_pos_old.y;//元の高さに戻す
-				m_vec.y = 0;//落下速度リセット
-				m_is_ground = true;//接地フラグON
+				//地面に接触
+				if (pos.y < m_pos.y) {
+					//ジャンプ回数リセット
+					m_is_ground = true;
+				}
+				//元の位置に戻す
+				m_pos.y = pos.y;
+				//落下速度リセット
+				m_vec.y = 0;
+
 			}
 		}
 		break;
@@ -87,7 +101,6 @@ void Player::Collision(Base* b) {
 		}
 		break;
 	case eType_Creature:
-		if (m_state != eState_Throw) {
 			if (Base::CollisionRect(this, b)) {
 				if (Creature* c = dynamic_cast<Creature*>(b)) {
 					if (!c->m_player) {
@@ -97,7 +110,6 @@ void Player::Collision(Base* b) {
 					}
 				}
 			}
-		}
 		break;
 	}
 }

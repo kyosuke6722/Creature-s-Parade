@@ -1,12 +1,13 @@
 #include "Obstacle.h"
 
-Obstacle::Obstacle(CVector2D pos,int hp):Base(eType_Obstacle) {
+Obstacle::Obstacle(CVector2D pos, int hp) :Base(eType_Obstacle) {
 	m_img = COPY_RESOURCE("Obstacle", CImage);
+	m_gauge = COPY_RESOURCE("Gauge", CImage);
 	m_img.SetRect(15, 32, 386, 323);
-	m_img.SetSize(72*9, 72*7);
-	m_rect = CRect(0,0,72*9,72*7);
+	m_img.SetSize(72 * 9, 72 * 7);
+	m_rect = CRect(0, 0, 72 * 9, 72 * 7);
 	m_pos = pos;
-	m_hp = hp;
+	m_hp = m_max_hp = hp;
 }
 
 Obstacle::~Obstacle(){
@@ -26,7 +27,25 @@ void Obstacle::Collision(Base* b){
 }
 
 void Obstacle::Draw(){
-	m_img.SetPos(m_pos);
+	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
+	
+	//ògÇÃï\é¶
+	m_gauge.SetRect(0, 0, 256, 64);
+	m_gauge.SetSize(256, 64);
+	m_gauge.SetPos(GetScreenPos(m_pos));
+	m_gauge.Draw();
+
+	//ÉQÅ[ÉWÇÃï\é¶
+	//ÉQÅ[ÉWÇÃí∑Ç≥ 4ÇÕògÇÃëæÇ≥
+	int border=4;
+	float m_par = m_hp /m_max_hp;
+	int width = (256 - border - border)*m_par;
+	int m_gauge_type=0;
+	int y = (m_gauge_type + 1);
+	m_gauge.SetRect(border, (64*y) + border, 4+width, (64 * (y+1)) - border);
+	m_gauge.SetSize(width, 64 - border - border);
+	m_gauge.SetPos(GetScreenPos(m_pos+CVector2D(border, border)));
+	m_gauge.Draw();
 }
