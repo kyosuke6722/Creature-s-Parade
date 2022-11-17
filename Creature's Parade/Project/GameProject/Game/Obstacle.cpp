@@ -8,9 +8,14 @@ Obstacle::Obstacle(CVector2D pos, int hp) :Base(eType_Obstacle) {
 	m_rect = CRect(0, 0, 72 * 9, 72 * 7);
 	m_pos = pos;
 	m_hp = m_max_hp = hp;
+	m_par = 0;
 }
 
 Obstacle::~Obstacle(){
+}
+
+void Obstacle::Update(){
+	SetValue((float)m_hp/m_max_hp);
 }
 
 void Obstacle::Collision(Base* b){
@@ -40,12 +45,17 @@ void Obstacle::Draw(){
 	//ゲージの表示
 	//ゲージの長さ 4は枠の太さ
 	int border=4;
-	float m_par = m_hp /m_max_hp;
 	int width = (256 - border - border)*m_par;
 	int m_gauge_type=0;
+	if (m_par < 0.4)
+		m_gauge_type = 1;
 	int y = (m_gauge_type + 1);
 	m_gauge.SetRect(border, (64*y) + border, 4+width, (64 * (y+1)) - border);
 	m_gauge.SetSize(width, 64 - border - border);
 	m_gauge.SetPos(GetScreenPos(m_pos+CVector2D(border, border)));
 	m_gauge.Draw();
+}
+
+void Obstacle::SetValue(float par){
+	m_par = par;
 }
