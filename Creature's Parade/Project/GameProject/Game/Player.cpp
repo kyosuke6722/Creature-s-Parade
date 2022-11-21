@@ -13,7 +13,7 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_flip = flip;
 	m_state = eState_Idle;
 	m_is_ground = true;
-	m_hp = 2;//‘Ì—Í
+	m_hp = 3;//‘Ì—Í
 	m_invincible=0;//–³“GŠÔ
 	m_bring = 0;//˜A‚ê‚Ä‚¢‚é”
 }
@@ -86,18 +86,30 @@ void Player::Collision(Base* b) {
 		}
 		break;
 	case eType_Obstacle:
-		if (CollisionRect(this, b)) {
-			m_pos.x = m_pos_old.x;
+		if (CollisionRect(this, b)){
+				m_pos.x = m_pos_old.x;
 		}
 		break;
 	case eType_Effect:
+	case eType_Enemy_Attack:
 		if (CollisionRect(this, b)&&m_invincible<=0) {
+			int r = rand() % 2;
 			m_hp--;
-			if (m_hp <= 0)
+			if (m_hp <= 0){
 				m_state = eState_Down;
-			else
+				if (r == 0)
+					SOUND("Voice_Player_down1")->Play();
+				else
+					SOUND("Voice_Player_down2")->Play();
+			}
+			else {
 				m_state = eState_Damage;
-			m_invincible = 3 * 60;
+				if (r == 0)
+					SOUND("Voice_Player_damage1")->Play();
+				else
+					SOUND("Voice_Player_damage2")->Play();
+			}
+			m_invincible = 2 * 60;
 		}
 		break;
 	case eType_Creature:
@@ -165,6 +177,10 @@ void Player::StateThrow(){
 		m_pos.x -= move_speed;
 		m_flip = false;
 	}
+	//“Š‚°
+	if (PUSH(CInput::eMouseL)) {
+		ThrowCreature();
+	}
 	m_img.ChangeAnimation(eAnimThrow,false);
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eState_Idle;
@@ -180,9 +196,8 @@ void Player::StateDamage(){
 
 void Player::StateDown(){
 	m_img.ChangeAnimation(eAnimDown, false);
-	if (m_img.CheckAnimationEnd()) {
-		SetKill();
-	}
+	//if (m_img.CheckAnimationEnd()) {
+	//}
 }
 
 void Player::EraseCreature(Creature* c){
@@ -200,6 +215,7 @@ void Player::ThrowCreature() {
 		(*it)->m_type = eType_Player_Attack;
 		(*it)->m_player = nullptr;
 		it = m_creature.erase(it);
+		SOUND("SE_Throw")->Play();
 		m_bring--;
 		for (it; it != it2; it++) {
 			(*it)->m_column--;

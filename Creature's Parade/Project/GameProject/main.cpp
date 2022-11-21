@@ -79,13 +79,24 @@ void Init(void)
 	//マップ,ギミック
 	ADD_RESOURCE("Obstacle", CImage::CreateImage("Image/Obstacle_test.png"));
 	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
+	ADD_RESOURCE("Arrow", CImage::CreateImage("Image/Arrow.png"));
 	ADD_RESOURCE("Fire", CImage::CreateImage("Image/Fire.png", effect_fire_anim_data, 24, 32));
 	ADD_RESOURCE("LaunchPad", CImage::CreateImage("Image/LaunchPad.png",launchpad_anim_data,16,16));
 	//UI
 	ADD_RESOURCE("Life", CImage::CreateImage("Image/Life.png"));
 	ADD_RESOURCE("Gauge", CImage::CreateImage("Image/Gauge_test.png"));
 
-
+	//SE
+	SOUND("Voice_Player_damage1")->Load("SOUND/SE/Voice_Player_damage1.wav",1);
+	SOUND("Voice_Player_damage2")->Load("SOUND/SE/Voice_Player_damage2.wav",1);
+	SOUND("Voice_Player_down1")->Load("SOUND/SE/Voice_Player_down1.wav",1);
+	SOUND("Voice_Player_down2")->Load("SOUND/SE/Voice_Player_down2.wav",1);
+	SOUND("SE_Throw")->Load("SOUND/SE/SE_Throw.wav",10);
+	SOUND("SE_Arrow")->Load("SOUND/SE/SE_Arrow.wav",10);
+	SOUND("SE_Fire")->Load("SOUND/SE/SE_Fire.wav",10);
+	SOUND("SE_Obstacle_broken")->Load("SOUND/SE/SE_Obstacle_broken.wav",2);
+	SOUND("SE_Obstacle_damage")->Load("SOUND/SE/SE_Obstacle_damage.wav",5);
+	
 
 	Base::Add(new Title());
 

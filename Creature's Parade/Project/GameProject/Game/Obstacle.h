@@ -6,6 +6,7 @@ private:
 	CImage m_img;
 	CImage m_gauge;//耐久力ゲージ
 	float m_par;
+	int m_gauge_cnt;//耐久力ゲージ表示フラグ&表示秒数
 public:
 	Obstacle(CVector2D pos,int hp);
 	~Obstacle();

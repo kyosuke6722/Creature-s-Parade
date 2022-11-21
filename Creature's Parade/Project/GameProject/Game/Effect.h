@@ -6,6 +6,7 @@ private:
 	CImage m_img;
 public:
 	Effect(const char* name,CVector2D pos);
+	~Effect();
 	void Update();
 	void Draw();
 };

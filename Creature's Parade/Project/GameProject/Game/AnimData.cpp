@@ -97,7 +97,7 @@ TexAnimData effect_fire_anim_data[] = {
 static TexAnim launchpad[] = {
 	{0,60},
 	{1,6},
-	{2,6},
+	{2,12},
 	{3,2*60},
 	{2,6},
 	{1,6},
