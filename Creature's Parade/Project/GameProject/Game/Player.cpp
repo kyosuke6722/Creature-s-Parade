@@ -86,7 +86,21 @@ void Player::Collision(Base* b) {
 		}
 		break;
 	case eType_Obstacle:
-		if (CollisionRect(this, b)){
+		if (CollisionRect(this, b)) {
+			//上下の判定
+			if (CollisionRectTB(this, b)) {
+				//地面に接触
+				if (b->m_pos.y > m_pos.y) {
+					//ジャンプ回数リセット
+					m_is_ground = true;
+				}
+				//元の位置に戻す
+				m_pos.y = m_pos_old.y;
+				//落下速度リセット
+				m_vec.y = 0;
+			}
+			//横の判定
+			else
 				m_pos.x = m_pos_old.x;
 		}
 		break;
@@ -130,7 +144,7 @@ void Player::Draw() {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
-	//DrawRect();
+	DrawRect();
 }
 
 void Player::StateIdle() {

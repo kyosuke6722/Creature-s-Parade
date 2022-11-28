@@ -2,6 +2,7 @@
 #include <GLLibrary.h>
 enum {
 	eType_Field,
+	eType_EnemyManager,
 	eType_Obstacle,
 	eType_Enemy,
 	eType_Player,
@@ -66,6 +67,8 @@ public:
 	static bool CollisionCircle(Base* b1, Base* b2);
 	//‹éŒ`“¯Žm‚Ì”»’è
 	static bool CollisionRect(Base* b1, Base* b2);
+	static bool CollisionRectTB(Base* b1, Base* b2);
+
 	/// ‹éŒ`‚Ì•\Ž¦
 	void DrawRect();
 

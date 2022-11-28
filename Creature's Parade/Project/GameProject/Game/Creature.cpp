@@ -75,7 +75,21 @@ void Creature::Collision(Base* b) {
 		break;
 	case eType_Obstacle:
 		if (CollisionRect(this, b)) {
-			m_pos.x = m_pos_old.x;
+			//上下の判定
+			if (CollisionRectTB(this, b)) {
+				//地面に接触
+				if (b->m_pos.y > m_pos.y) {
+					//ジャンプ回数リセット
+					m_is_ground = true;
+				}
+				//元の位置に戻す
+				m_pos.y = m_pos_old.y;
+				//落下速度リセット
+				m_vec.y = 0;
+			}
+			//横の判定
+			else
+				m_pos.x = m_pos_old.x;
 			m_vec.x = 0;
 			m_type = eType_Creature;
 		}
