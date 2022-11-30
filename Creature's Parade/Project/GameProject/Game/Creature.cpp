@@ -52,6 +52,7 @@ void Creature::Collision(Base* b) {
 			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y), m_rect, &pos);
 			//ï«Ç»ÇÁÇŒ
 			if (t != 0) {
+				m_vec.x = 0;
 				//ï«ç€Ç‹Ç≈ñﬂÇÈ
 				m_pos.x = pos.x;
 			}
@@ -91,7 +92,10 @@ void Creature::Collision(Base* b) {
 			//â°ÇÃîªíË
 			else
 				m_pos.x = m_pos_old.x;
-			m_vec.x = 0;
+			if (Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player))) {
+				float vec_x =p->m_pos.x -m_pos.x;
+				m_vec.x *=vec_x/600;
+			}
 			ChangeType();
 		}
 		break;

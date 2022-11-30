@@ -14,8 +14,8 @@ Game::Game() :Base(eType_Scene) {
 	Base::Add(new Creature("Slime_green", CVector2D(7 * 72, 13 * 72), false));
 	Base::Add(new Creature("Witch_pauple", CVector2D(8 * 72, 13 * 72), false));
 	Base::Add(new Obstacle(CVector2D(25 * 72, 13 * 72), 15));
-	Base::Add(new Trap(CVector2D(15 * 72 - 36, 14 * 72), 0));
-	Base::Add(new Trap(CVector2D(15 * 72 - 36, 11 * 72), 1));
+	Base::Add(new Trap(CVector2D(15 * 72 - 36, 14 * 72), 0,0));
+	Base::Add(new Trap(CVector2D(15 * 72 - 36, 11 * 72), 1,0));
 
 	Base::Add(new UI());
 }

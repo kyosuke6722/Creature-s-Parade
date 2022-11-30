@@ -247,7 +247,8 @@ void Player::GatherCreature(){
 	auto last = m_list.end();
 	while (it != last) {
 		if ((*it)->m_type ==eType_Friend) {
-			(*it)->m_pos = m_pos + CVector2D(0, -72 * 3);
+			(*it)->m_vec = CVector2D(0, 0);
+			(*it)->m_pos = m_pos + CVector2D(0, -72 * 2);
 		}
 		it++;
 	}

@@ -12,7 +12,7 @@ private:
 	int m_bullet_type;//’e‚ÌŽí—Þ
 	bool m_fire;//Effect˜A”­–hŽ~
 public:
-	Trap(CVector2D pos,int bullet_type);
+	Trap(CVector2D pos,int bullet_type,float ang);
 	~Trap();
 	void Update();
 	void Collision(Base* b);
