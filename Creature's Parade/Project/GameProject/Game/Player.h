@@ -28,6 +28,7 @@ public:
 	void StateDown();
 	void EraseCreature(Creature* c);
 	void ThrowCreature();
+	void GatherCreature();
 	bool m_flip;
 	int m_hp;//‘Ì—Í
 };

@@ -3,17 +3,18 @@
 #include"Map.h"
 #include"AnimData.h"
 
-Creature::Creature(const char* name,CVector2D pos,bool flip):Base(eType_Creature) {
+Creature::Creature(const char* name, CVector2D pos, bool flip) :Base(eType_Creature) {
 	m_img = COPY_RESOURCE(name, CImage);
 	m_img.ChangeAnimation(eAnimIdle);
 	m_img.SetSize(32 * 4, 32 * 4);
 	m_img.SetCenter(16 * 4, 32 * 4);
 	m_rect = CRect(-7 * 4, -10 * 8, 7 * 4, 0);
-	m_pos =m_pos_old= pos;
+	m_pos = m_pos_old = pos;
 	m_flip = flip;
 	m_state = eState_Idle;
 	m_is_ground = true;
 	m_player = nullptr;
+	m_friend = false;
 	m_column = 0;//0列目(Playerについていない)
 }
 
@@ -63,7 +64,7 @@ void Creature::Collision(Base* b) {
 					//ジャンプ回数リセット
 					m_is_ground = true;
 					m_vec.x *= 0.8;//摩擦
-					m_type = eType_Creature;
+					ChangeType();
 				}
 				//元の位置に戻す
 				m_pos.y = pos.y;
@@ -91,7 +92,7 @@ void Creature::Collision(Base* b) {
 			else
 				m_pos.x = m_pos_old.x;
 			m_vec.x = 0;
-			m_type = eType_Creature;
+			ChangeType();
 		}
 		break;
 		/*
@@ -143,6 +144,13 @@ void Creature::StateIdle() {
 	else
 		m_img.ChangeAnimation(eAnimIdle);
 
+}
+
+void Creature::ChangeType(){
+	if (m_friend)
+		m_type = eType_Friend;
+	else
+		m_type = eType_Creature;
 }
 
 /*

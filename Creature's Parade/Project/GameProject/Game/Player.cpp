@@ -127,12 +127,14 @@ void Player::Collision(Base* b) {
 		}
 		break;
 	case eType_Creature:
+	case eType_Friend:
 			if (Base::CollisionRect(this, b)) {
 				if (Creature* c = dynamic_cast<Creature*>(b)) {
 					if (!c->m_player) {
 						c->m_player = this;//親をplayerに設定
+						c->m_friend = true;//仲間フラグON
 						m_creature.push_back(c);//listにcreatureを追加
-						c->m_column = ++m_bring;
+						c->m_column = ++m_bring;//連れている数を更新
 					}
 				}
 			}
@@ -176,6 +178,8 @@ void Player::StateIdle() {
 		m_state = eState_Throw;
 		ThrowCreature();
 	}
+	if (PUSH(CInput::eDown))
+		GatherCreature();
 }
 
 void Player::StateThrow(){
@@ -216,6 +220,7 @@ void Player::StateDown(){
 
 void Player::EraseCreature(Creature* c){
 	auto it = std::find(m_creature.begin(), m_creature.end(), c);//リストから子を検索
+	(*it)->m_friend = false;//仲間フラグを解除
 	(*it)->m_player = nullptr;//子　親を解除
 	m_creature.erase(it);//親　子をリストから外す
 }
@@ -234,5 +239,16 @@ void Player::ThrowCreature() {
 		for (it; it != it2; it++) {
 			(*it)->m_column--;
 		}
+	}
+}
+
+void Player::GatherCreature(){
+	auto it = m_list.begin();
+	auto last = m_list.end();
+	while (it != last) {
+		if ((*it)->m_type ==eType_Friend) {
+			(*it)->m_pos = m_pos + CVector2D(0, -72 * 3);
+		}
+		it++;
 	}
 }

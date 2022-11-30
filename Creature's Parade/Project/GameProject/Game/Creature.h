@@ -17,9 +17,11 @@ public:
 	~Creature();
 	Player* m_player;
 	int m_column;//‰½—ñ–Ú‚É‚¢‚é‚©
+	bool m_friend;//’‡ŠÔƒtƒ‰ƒO
 	void Update();
 	void Collision(Base* b);
 	void Draw();
 	void StateIdle();
+	void ChangeType();
 	//void StateThrow();
 };

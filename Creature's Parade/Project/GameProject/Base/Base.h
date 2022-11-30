@@ -6,6 +6,7 @@ enum {
 	eType_Obstacle,
 	eType_Enemy,
 	eType_Player,
+	eType_Friend,
 	eType_Creature,
 	eType_Goal,
 	eType_Player_Attack,
