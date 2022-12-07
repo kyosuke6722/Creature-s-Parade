@@ -78,6 +78,7 @@ void Init(void)
 	ADD_RESOURCE("Witch_pauple", CImage::CreateImage("Image/Witch_pauple.png", creature_anim_data, 32, 32));
 	//マップ,ギミック
 	ADD_RESOURCE("Obstacle", CImage::CreateImage("Image/Obstacle_test.png"));
+	ADD_RESOURCE("Background", CImage::CreateImage("Image/Background.png"));
 	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
 	ADD_RESOURCE("Arrow", CImage::CreateImage("Image/Arrow.png"));
 	ADD_RESOURCE("Fire", CImage::CreateImage("Image/Fire.png", effect_fire_anim_data, 24, 32));

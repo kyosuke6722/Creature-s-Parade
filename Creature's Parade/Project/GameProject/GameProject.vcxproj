@@ -14,6 +14,7 @@
     <ClCompile Include="Base\Base.cpp" />
     <ClCompile Include="Game\AnimData.cpp" />
     <ClCompile Include="Game\Arrow.cpp" />
+    <ClCompile Include="Game\Background.cpp" />
     <ClCompile Include="Game\Creature.cpp" />
     <ClCompile Include="Game\Effect.cpp" />
     <ClCompile Include="Game\Game.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="Base\Base.h" />
     <ClInclude Include="Game\AnimData.h" />
     <ClInclude Include="Game\Arrow.h" />
+    <ClInclude Include="Game\Background.h" />
     <ClInclude Include="Game\Creature.h" />
     <ClInclude Include="Game\Effect.h" />
     <ClInclude Include="Game\Game.h" />

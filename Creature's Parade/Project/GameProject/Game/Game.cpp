@@ -3,10 +3,12 @@
 #include"Creature.h"
 #include"Obstacle.h"
 #include"Trap.h"
+#include"Background.h"
 #include"Map.h"
 #include"UI.h"
 
 Game::Game() :Base(eType_Scene) {
+	Base::Add(new Background());
 	Base::Add(new Map());
 	Base::Add(new Player(CVector2D(3 * 72, 13 * 72), true));
 	Base::Add(new Creature("Cat_pink", CVector2D(6 * 72, 13 * 72), true));
