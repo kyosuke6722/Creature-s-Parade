@@ -94,7 +94,7 @@ void Creature::Collision(Base* b) {
 				m_pos.x = m_pos_old.x;
 			if (Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player))) {
 				float vec_x =p->m_pos.x -m_pos.x;
-				m_vec.x *=vec_x/600;
+				m_vec.x *= -abs(vec_x)/600;
 			}
 			ChangeType();
 		}

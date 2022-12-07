@@ -44,6 +44,12 @@
     <ClCompile Include="Game\EnemyManager.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Platform.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Switch.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -97,6 +103,12 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\EnemyManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Platform.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Switch.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

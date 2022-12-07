@@ -2,14 +2,15 @@
 #include"Effect.h"
 #include"Arrow.h"
 
-Trap::Trap(CVector2D pos,int bullet_type,float ang):Base(eType_Obstacle) {
+Trap::Trap(CVector2D pos,int bullet_type,int ang):Base(eType_Obstacle) {
 	m_img = COPY_RESOURCE("LaunchPad", CImage);
 	m_img.ChangeAnimation(0);
 	m_pos = m_pos_old = pos+CVector2D(0, -36);
 	m_bullet_type = bullet_type;
 	m_img.SetSize(72,72);
 	m_img.SetCenter(36,36);
-	m_ang = (90 * ang / 180)*3.14;
+	m_bullet_ang = ang;
+	m_ang = DtoR(90 * ang);
 	m_rect = CRect(-36,-36,36,36);
 	m_hp = 5;
 	m_fire = true;
@@ -23,10 +24,36 @@ void Trap::Update() {
 		if (m_img.GetIndex() == 3 && m_fire) {
 			switch (m_bullet_type) {
 			case Bullet_fire:
-				Base::Add(new Effect("Fire", m_pos + CVector2D(0, -36)));
+				switch (m_bullet_ang) {
+				case 0://ãŒü‚«
+					Base::Add(new Effect("Fire", m_pos + CVector2D(0, -36), m_bullet_ang));
+					break;
+				case 1://¶Œü‚«
+					Base::Add(new Effect("Fire", m_pos + CVector2D(-36, 0), m_bullet_ang));
+					break;
+				case 2://‰ºŒü‚«
+					Base::Add(new Effect("Fire", m_pos + CVector2D(0, 36), m_bullet_ang));
+					break;
+				case 3://‰EŒü‚«
+					Base::Add(new Effect("Fire", m_pos + CVector2D(36, 0), m_bullet_ang));
+					break;
+				}
 				break;
 			case Bullet_arrow:
-				Base::Add(new Arrow(m_pos + CVector2D(0, -36-55),m_ang));
+				switch (m_bullet_ang) {
+				case 0://ãŒü‚«
+					Base::Add(new Arrow(m_pos + CVector2D(0, -36 - 55), m_bullet_ang));
+					break;
+				case 1://¶Œü‚«
+					Base::Add(new Arrow(m_pos + CVector2D(-36 - 55, 0), m_bullet_ang));
+					break;
+				case 2://‰ºŒü‚«
+					Base::Add(new Arrow(m_pos + CVector2D(0, 36 + 55), m_bullet_ang));
+					break;
+				case 3://‰EŒü‚«
+					Base::Add(new Arrow(m_pos + CVector2D(36 + 55, 0), m_bullet_ang));
+					break;
+				}
 				break;
 			}
 			m_fire = false;
@@ -52,5 +79,5 @@ void Trap::Draw(){
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetAng(m_ang);
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }

@@ -1,19 +1,42 @@
 #include "Arrow.h"
 #include"Map.h"
 
-Arrow::Arrow(CVector2D pos,float ang):Base(eType_Enemy_Attack){
+Arrow::Arrow(CVector2D pos,int ang):Base(eType_Enemy_Attack){
 	m_img = COPY_RESOURCE("Arrow", CImage);
 	SOUND("SE_Arrow")->Play();
 	m_img.SetSize(7*10,11*10);
 	m_img.SetCenter(3.5*10, 5.5*10);
-	m_ang =ang-3.14;
-	m_rect = CRect(-3.5*10,-5.5*10,3.5*10,5.5*10);
+	m_ang =DtoR(ang*90-180);
+	m_bullet_ang=ang;
+	switch (m_bullet_ang) {
+	case 0:
+	case 2:
+		m_rect = CRect(-3.5 * 10, -5.5 * 10, 3.5 * 10, 5.5 * 10);
+		break;
+	case 1:
+	case 3:
+		m_rect = CRect(-5.5 * 10, -3.5 * 10, 5.5 * 10, 3.5 * 10);
+		break;
+	}
 	m_pos = pos;
 }
 
 void Arrow::Update(){
 	const int move_speed = 6;
-	m_pos.y -= move_speed;
+	switch (m_bullet_ang) {
+	case 0://ãŒü‚«
+		m_pos.y -= move_speed;
+		break;
+	case 1://¶Œü‚«
+		m_pos.x -= move_speed;
+		break;
+	case 2://‰ºŒü‚«
+		m_pos.y += move_speed;
+		break;
+	case 3://‰EŒü‚«
+		m_pos.x += move_speed;
+		break;
+	}
 }
 
 void Arrow::Collision(Base* b) {
@@ -41,5 +64,5 @@ void Arrow::Draw(){
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetAng(m_ang);
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 }

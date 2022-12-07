@@ -43,7 +43,7 @@ void Obstacle::Collision(Base* b){
 void Obstacle::Draw(){
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.Draw();
-	DrawRect();
+	//DrawRect();
 	
 	if (m_gauge_cnt > 0) {
 		//˜g‚Ì•\Ž¦

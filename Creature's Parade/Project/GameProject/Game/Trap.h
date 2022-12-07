@@ -10,9 +10,10 @@ private:
 	CImage m_img;
 	int m_hp;//‘Ï‹v—Í
 	int m_bullet_type;//’e‚ÌŽí—Þ
+	int m_bullet_ang;//’e‚Ì‰ñ“]
 	bool m_fire;//Effect˜A”­–hŽ~
 public:
-	Trap(CVector2D pos,int bullet_type,float ang);
+	Trap(CVector2D pos,int bullet_type,int ang);
 	~Trap();
 	void Update();
 	void Collision(Base* b);

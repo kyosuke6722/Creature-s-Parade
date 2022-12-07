@@ -21,7 +21,9 @@
     <ClCompile Include="Game\EnemyManager.cpp" />
     <ClCompile Include="Game\Map.cpp" />
     <ClCompile Include="Game\Obstacle.cpp" />
+    <ClCompile Include="Game\Platform.cpp" />
     <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Switch.cpp" />
     <ClCompile Include="Game\Trap.cpp" />
     <ClCompile Include="Game\UI.cpp" />
     <ClCompile Include="main.cpp" />
@@ -38,7 +40,9 @@
     <ClInclude Include="Game\EnemyManager.h" />
     <ClInclude Include="Game\Map.h" />
     <ClInclude Include="Game\Obstacle.h" />
+    <ClInclude Include="Game\Platform.h" />
     <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Switch.h" />
     <ClInclude Include="Game\Trap.h" />
     <ClInclude Include="Game\UI.h" />
     <ClInclude Include="Title\Title.h" />
