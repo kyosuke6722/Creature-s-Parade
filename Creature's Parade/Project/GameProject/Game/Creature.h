@@ -23,5 +23,4 @@ public:
 	void Draw();
 	void StateIdle();
 	void ChangeType();
-	//void StateThrow();
 };

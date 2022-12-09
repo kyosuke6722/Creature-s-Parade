@@ -2,6 +2,7 @@
 #include <GLLibrary.h>
 enum {
 	eType_Field,
+	eType_Platform,
 	eType_EnemyManager,
 	eType_Obstacle,
 	eType_Enemy,

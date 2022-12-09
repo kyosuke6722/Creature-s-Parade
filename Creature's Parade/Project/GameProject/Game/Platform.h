@@ -4,8 +4,7 @@ class Platform :public Base {
 private:
 	CImage m_img;
 public:
-	Platform();
+	Platform(CVector2D pos);
 	void Update();
-	void Collision();
 	void Draw();
 };

@@ -83,6 +83,8 @@ void Init(void)
 	ADD_RESOURCE("Arrow", CImage::CreateImage("Image/Arrow.png"));
 	ADD_RESOURCE("Fire", CImage::CreateImage("Image/Fire.png", effect_fire_anim_data, 24, 32));
 	ADD_RESOURCE("LaunchPad", CImage::CreateImage("Image/LaunchPad.png",launchpad_anim_data,12,10));
+	ADD_RESOURCE("Platform", CImage::CreateImage("Image/Platform.png"));
+	ADD_RESOURCE("Switch", CImage::CreateImage("Image/Switch.png"));
 	//UI
 	ADD_RESOURCE("Life", CImage::CreateImage("Image/Life.png",heart_anim_data,32,32));
 	ADD_RESOURCE("Gauge", CImage::CreateImage("Image/Gauge_test.png"));

@@ -108,6 +108,21 @@ void Player::Collision(Base* b) {
 				m_pos.x = m_pos_old.x;
 		}
 		break;
+	case eType_Platform:
+		if (CollisionRect(this, b)) {
+			//上下の判定
+			if (CollisionRectTB(this, b)) {
+				if (m_vec.y > 0&&b->m_pos.y>m_pos.y) {
+					//ジャンプ回数リセット
+					m_is_ground = true;
+					//元の位置に戻す
+					m_pos.y = m_pos_old.y;
+					//落下速度リセット
+					m_vec.y = 0;
+				}
+			}
+		}
+		break;
 	case eType_Effect:
 	case eType_Enemy_Attack:
 		if (CollisionRect(this, b)&&m_invincible<=0) {

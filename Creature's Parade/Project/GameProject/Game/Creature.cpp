@@ -29,11 +29,6 @@ void Creature::Update() {
 	case eState_Idle:
 		StateIdle();
 		break;
-		/*
-	case eState_Throw:
-		StateThrow();
-		break;
-		*/
 	}
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
 		m_is_ground = false;
@@ -98,13 +93,24 @@ void Creature::Collision(Base* b) {
 			ChangeType();
 		}
 		break;
-		/*
-	case eType_Player:
+	case eType_Platform:
 		if (CollisionRect(this, b)) {
-			m_state=eState_Throw;
+			//上下の判定
+			if (CollisionRectTB(this, b)) {
+				if (m_vec.y > 0 && b->m_pos.y > m_pos.y) {
+					//ジャンプ回数リセット
+					m_is_ground = true;
+					//元の位置に戻す
+					m_pos.y = m_pos_old.y;
+					//落下速度リセット
+					m_vec.y = 0;
+					//摩擦
+					m_vec.x *= 0.8;
+					ChangeType();
+				}
+			}
 		}
 		break;
-		*/
 	}
 }
 
@@ -155,21 +161,3 @@ void Creature::ChangeType(){
 	else
 		m_type = eType_Creature;
 }
-
-/*
-void Creature::StateThrow(){
-	Player* p = dynamic_cast<Player*>(Base::FindObject(eType_Player));
-	m_flip = p->m_flip;
-	if (p) {
-		if (m_flip)
-			m_pos.x = p->m_pos.x - 45;
-		else
-			m_pos.x = p->m_pos.x + 45;
-		const float jump_pow = 15;
-		if (m_is_ground && PUSH(CInput::eButton5)) {
-			m_vec.y = -jump_pow;
-			m_is_ground = false;
-		}
-	}
-}
-*/
