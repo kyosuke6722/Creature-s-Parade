@@ -6,6 +6,7 @@ private:
 public:
 	Switch();
 	void Update();
-	void Collision();
+	void Collision(Base* b);
 	void Draw();
+	bool move_flag;//PlatformˆÚ“®ƒtƒ‰ƒO
 };

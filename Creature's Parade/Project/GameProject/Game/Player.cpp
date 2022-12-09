@@ -1,6 +1,7 @@
 #include "Player.h"
 #include"AnimData.h"
 #include"Creature.h"
+#include"UI.h"
 #include"Map.h"
 
 Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
@@ -16,6 +17,9 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_hp = 3;//‘Ì—Í
 	m_invincible=0;//–³“GŽžŠÔ
 	m_bring = 0;//˜A‚ê‚Ä‚¢‚é”
+	for (int i = m_hp; i > 0;i--) {
+		Base::Add(new UI(CVector2D(i * 48 - 16, 32)));
+	}
 }
 
 void Player::Update() {
@@ -109,6 +113,8 @@ void Player::Collision(Base* b) {
 		if (CollisionRect(this, b)&&m_invincible<=0) {
 			int r = rand() % 2;
 			m_hp--;
+			if (UI* u = dynamic_cast<UI*>(Base::FindObject(eType_UI)))
+				u->m_damage=true;
 			if (m_hp <= 0){
 				m_state = eState_Down;
 				if (r == 0)

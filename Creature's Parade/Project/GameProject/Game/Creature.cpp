@@ -65,13 +65,12 @@ void Creature::Collision(Base* b) {
 					//ジャンプ回数リセット
 					m_is_ground = true;
 					m_vec.x *= 0.8;//摩擦
-					ChangeType();
 				}
 				//元の位置に戻す
 				m_pos.y = pos.y;
 				//落下速度リセット
 				m_vec.y = 0;
-
+				ChangeType();
 			}
 		}
 		break;

@@ -84,7 +84,7 @@ void Init(void)
 	ADD_RESOURCE("Fire", CImage::CreateImage("Image/Fire.png", effect_fire_anim_data, 24, 32));
 	ADD_RESOURCE("LaunchPad", CImage::CreateImage("Image/LaunchPad.png",launchpad_anim_data,12,10));
 	//UI
-	ADD_RESOURCE("Life", CImage::CreateImage("Image/Life.png"));
+	ADD_RESOURCE("Life", CImage::CreateImage("Image/Life.png",heart_anim_data,32,32));
 	ADD_RESOURCE("Gauge", CImage::CreateImage("Image/Gauge_test.png"));
 
 	//SE

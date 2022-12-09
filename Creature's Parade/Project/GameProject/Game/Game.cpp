@@ -22,7 +22,7 @@ Game::Game() :Base(eType_Scene) {
 	Base::Add(new Trap(CVector2D(14 * 72 - 36, 10 * 72), 1, 3));
 	
 	//Base::Add(new Obstacle(CVector2D(8 * 72, 13 * 72), 15));
-	Base::Add(new UI());
+	//Base::Add(new UI());
 }
 
 Game::~Game(){

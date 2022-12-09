@@ -18,3 +18,5 @@ extern TexAnimData creature_anim_data[];
 extern TexAnimData effect_fire_anim_data[];
 //発射台のアニメーションデータ
 extern TexAnimData launchpad_anim_data[];
+//UIのアニメーションデータ
+extern TexAnimData heart_anim_data[];
