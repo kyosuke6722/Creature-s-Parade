@@ -22,13 +22,17 @@ public:
 	void Update();
 	void Collision(Base* b);
 	void Draw();
+	//状態関連
 	void StateIdle();
 	void StateThrow();
 	void StateDamage();
 	void StateDown();
+	void OnPlatform(Base* b);//着地処理
+	//クリーチャー関連
 	void EraseCreature(Creature* c);
 	void ThrowCreature();
 	void GatherCreature();
 	bool m_flip;
+	bool m_on_platform;//足場に乗っているか
 	int m_hp;//体力
 };

@@ -17,6 +17,7 @@ Player::Player(CVector2D pos,bool flip):Base(eType_Player) {
 	m_hp = 3;//体力
 	m_invincible=0;//無敵時間
 	m_bring = 0;//連れている数
+	m_on_platform = false;
 	for (int i = m_hp; i > 0;i--) {
 		Base::Add(new UI(CVector2D(i * 48 - 16, 32)));
 	}
@@ -44,6 +45,10 @@ void Player::Update() {
 		m_is_ground = false;
 	m_vec.y += GRAVITY;//重力による落下
 	m_pos += m_vec;
+
+	if (m_on_platform) {
+		m_pos.y -= 0.6;
+	}
 
 	if (m_invincible > 0)
 		m_invincible--;
@@ -106,21 +111,6 @@ void Player::Collision(Base* b) {
 			//横の判定
 			else
 				m_pos.x = m_pos_old.x;
-		}
-		break;
-	case eType_Platform:
-		if (CollisionRect(this, b)) {
-			//上下の判定
-			if (CollisionRectTB(this, b)) {
-				if (m_vec.y > 0&&b->m_pos.y>m_pos.y) {
-					//ジャンプ回数リセット
-					m_is_ground = true;
-					//元の位置に戻す
-					m_pos.y = m_pos_old.y;
-					//落下速度リセット
-					m_vec.y = 0;
-				}
-			}
 		}
 		break;
 	case eType_Effect:
@@ -237,6 +227,19 @@ void Player::StateDown(){
 	m_img.ChangeAnimation(eAnimDown, false);
 	//if (m_img.CheckAnimationEnd()) {
 	//}
+}
+
+void Player::OnPlatform(Base* b){
+	if (m_vec.y>0&&b->m_pos.y > m_pos.y) {
+		//足場に乗っている
+		m_on_platform = true;
+		//ジャンプ回数リセット
+		m_is_ground = true;
+		//元の位置に戻す
+		m_pos.y = b->m_pos.y-18;
+		//落下速度リセット
+		m_vec.y = 0;
+	}
 }
 
 void Player::EraseCreature(Creature* c){

@@ -15,6 +15,7 @@ Creature::Creature(const char* name, CVector2D pos, bool flip) :Base(eType_Creat
 	m_is_ground = true;
 	m_player = nullptr;
 	m_friend = false;
+	m_on_platform = false;
 	m_column = 0;//0列目(Playerについていない)
 }
 
@@ -34,6 +35,8 @@ void Creature::Update() {
 		m_is_ground = false;
 	m_vec.y += GRAVITY;
 	m_pos += m_vec;
+	if (m_on_platform)
+		m_pos.y += 0.6;
 	m_img.UpdateAnimation();
 }
 
@@ -93,24 +96,6 @@ void Creature::Collision(Base* b) {
 			ChangeType();
 		}
 		break;
-	case eType_Platform:
-		if (CollisionRect(this, b)) {
-			//上下の判定
-			if (CollisionRectTB(this, b)) {
-				if (m_vec.y > 0 && b->m_pos.y > m_pos.y) {
-					//ジャンプ回数リセット
-					m_is_ground = true;
-					//元の位置に戻す
-					m_pos.y = m_pos_old.y;
-					//落下速度リセット
-					m_vec.y = 0;
-					//摩擦
-					m_vec.x *= 0.8;
-					ChangeType();
-				}
-			}
-		}
-		break;
 	}
 }
 
@@ -153,6 +138,22 @@ void Creature::StateIdle() {
 	else
 		m_img.ChangeAnimation(eAnimIdle);
 
+}
+
+void Creature::OnPlatform(Base* b){
+	if (m_vec.y > 0 && b->m_pos.y > m_pos.y) {
+		//足場に乗っている
+		m_on_platform = true;
+		//ジャンプ回数リセット
+		m_is_ground = true;
+		//元の位置に戻す
+		m_pos.y = b->m_pos.y - 18;
+		//落下速度リセット
+		m_vec.y = 0;
+		//摩擦
+		m_vec.x *= 0.8;
+		ChangeType();
+	}
 }
 
 void Creature::ChangeType(){
