@@ -24,8 +24,9 @@ Game::Game() :Base(eType_Scene) {
 	Base::Add(new Trap(CVector2D(13 * 72 - 36, 11 * 72), 1, 2));
 	Base::Add(new Trap(CVector2D(14 * 72 - 36, 10 * 72), 1, 3));
 	*/
-	Base::Add(new Obstacle(CVector2D(30 * 72, 14 * 72), 15));
-	//Base::Add(new Trap(CVector2D(19 * 72 - 36, 9 * 72), 0, 2));
+	//座標、HP、サイズ(マップチップ換算)
+	Base::Add(new Obstacle(CVector2D(22 * 72, 14 * 72), 15,8));
+	Base::Add(new Trap(CVector2D(19 * 72 - 36, 9 * 72), 0, 2));
 	//Base::Add(new Trap(CVector2D(18 * 72 - 36, 9 * 72), 1, 2));
 	Base::Add(new Switch(CVector2D(20*72,11*72)));
 	Base::Add(new Switch(CVector2D(21 * 72, 11 * 72)));

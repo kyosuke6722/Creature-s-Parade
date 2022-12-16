@@ -77,7 +77,7 @@ void Init(void)
 	ADD_RESOURCE("Witch_blue", CImage::CreateImage("Image/Witch_blue.png", creature_anim_data, 32, 32));
 	ADD_RESOURCE("Witch_pauple", CImage::CreateImage("Image/Witch_pauple.png", creature_anim_data, 32, 32));
 	//マップ,ギミック
-	ADD_RESOURCE("Obstacle", CImage::CreateImage("Image/Obstacle_test.png"));
+	ADD_RESOURCE("Rock", CImage::CreateImage("Image/Rock.png"));
 	ADD_RESOURCE("Background", CImage::CreateImage("Image/Background.png"));
 	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
 	ADD_RESOURCE("Arrow", CImage::CreateImage("Image/Arrow.png"));

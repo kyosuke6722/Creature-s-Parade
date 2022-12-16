@@ -12,7 +12,6 @@ private:
 		eState_Down,
 	};
 	CImage m_img;
-	//CImage m_throw;
 	int m_state;//状態変数
 	bool m_is_ground;//着地フラグ
 	int m_invincible;//無敵時間
@@ -28,11 +27,11 @@ public:
 	void StateDamage();
 	void StateDown();
 	void OnPlatform(Base* b);//着地処理
+	bool m_flip;
+	bool m_on_platform;//足場に乗っているか
+	int m_hp;//体力
 	//クリーチャー関連
 	void EraseCreature(Creature* c);
 	void ThrowCreature();
 	void GatherCreature();
-	bool m_flip;
-	bool m_on_platform;//足場に乗っているか
-	int m_hp;//体力
 };
