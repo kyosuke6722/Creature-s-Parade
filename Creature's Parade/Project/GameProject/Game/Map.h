@@ -1,7 +1,7 @@
 #pragma once
 #include"../Base/Base.h"
 
-#define MAP_WIDTH 50//マップの横のチップ数
+#define MAP_WIDTH 80//マップの横のチップ数
 
 #define MAP_HEIGHT 15//マップの縦のチップ数
 
@@ -10,6 +10,7 @@
 class Map :public Base {
 private:
 	CImage m_img;
+	CImage m_back;
 public:
 	Map();
 	void Draw();

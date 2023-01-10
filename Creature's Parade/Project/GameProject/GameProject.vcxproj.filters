@@ -56,6 +56,9 @@
     <ClCompile Include="Game\GameData.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Title\StageCelect.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -122,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameData.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Title\StageSelect.h">
+      <Filter>Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

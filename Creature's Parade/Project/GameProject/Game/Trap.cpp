@@ -5,7 +5,7 @@
 Trap::Trap(CVector2D pos,int bullet_type,int ang):Base(eType_Obstacle) {
 	m_img = COPY_RESOURCE("LaunchPad", CImage);
 	m_img.ChangeAnimation(0);
-	m_pos = m_pos_old = pos+CVector2D(0, -36);
+	m_pos = m_pos_old = pos+CVector2D(36,36);
 	m_bullet_type = bullet_type;
 	m_img.SetSize(72,72);
 	m_img.SetCenter(36,36);
